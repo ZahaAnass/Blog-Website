@@ -7,7 +7,7 @@ export default function Hero() {
 
     return(
         <>
-            <section className="container mx-auto px-4 py-20 ">
+            <section className="container mx-auto px-4 py-20 mt-16">
                 <div className="text-center max-w-4xl mx-auto">
                     <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6">
                     Welcome to Our Blog
