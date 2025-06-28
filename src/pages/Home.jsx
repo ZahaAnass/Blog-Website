@@ -5,8 +5,10 @@ export default function Home(){
 
     return(
         <>
-            <Hero />
-            <Features />
+            <div className="bg-gray-100 dark:bg-gray-900">
+                <Hero />
+                <Features />
+            </div>
         </>
     )
 }
