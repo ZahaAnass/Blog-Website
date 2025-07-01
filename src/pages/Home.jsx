@@ -1,6 +1,6 @@
-import Hero from '../components/Hero'
-import Features from '../components/Features'
-import Ready from '../components/Ready'
+import Hero from '../components/Home/Hero'
+import Features from '../components/Home/Features'
+import Ready from '../components/Home/Ready'
 import FooterComponent from '../components/Footer'
 
 export default function Home(){
@@ -11,7 +11,6 @@ export default function Home(){
                 <Hero />
                 <Features />
                 <Ready />
-                <FooterComponent />
             </div>
         </>
     )
