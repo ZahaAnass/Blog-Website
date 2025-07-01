@@ -11,7 +11,7 @@ export default function FooterComponent() {
   const currentYear = new Date().getFullYear();
   
   return (
-      <Footer container className="bg-gray-50 dark:bg-gray-800">
+      <Footer container className="bg-gray-50 dark:bg-gray-800 rounded-none">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
               <div className="flex flex-col sm:flex-row justify-between items-center py-6">
                   {/* Brand */}
@@ -55,7 +55,7 @@ export default function FooterComponent() {
               <FooterDivider className="border-gray-800" />
               
               {/* Copyright */}
-              <div className="w-full py-4 text-center">
+              <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-4 text-center">
                   <p className="text-sm text-gray-400 dark:text-gray-500">
                       © {currentYear} Blogspace. All rights reserved.
                   </p>
