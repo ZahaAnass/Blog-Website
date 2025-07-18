@@ -2,8 +2,13 @@ import { Card } from "flowbite-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCalendarAlt, faArrowRight, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "flowbite-react";
+import { useState } from "react";
+import Form from "./Form";
 
-export default function BlogCard({ title, excerpt, imageUrl, category, date, author }) {
+export default function BlogCard({id, title, excerpt, imageUrl, category, date, author, post, editPost, deletePost}) {
+
+    const [openEditForm, setOpenEditForm] = useState(false);
+
     return (
         <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
             {/* Image */}
@@ -60,15 +65,28 @@ export default function BlogCard({ title, excerpt, imageUrl, category, date, aut
                         />
                     </Button>
                     <div className="flex space-x-2">
-                        <Button color="gray" size="sm" className="!p-2 !px-4">
+                        <Button color="gray" size="sm" className="!p-2 !px-4" onClick={() => setOpenEditForm(true)}>
                             <FontAwesomeIcon icon={faEdit} className="h-4 w-4" />
                         </Button>
-                        <Button color="red" size="sm" className="!p-2 !px-4">
+                        <Button color="red" size="sm" className="!p-2 !px-4" onClick={() => deletePost(id)}>
                             <FontAwesomeIcon icon={faTrash} className="h-4 w-4" />
                         </Button>
                     </div>
                 </div>
             </div>
+
+            {openEditForm && (
+                <div className="fixed inset-0 z-50 overflow-y-auto">
+                    <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={() => setOpenEditForm(false)}></div>
+                    <div className="flex min-h-full items-center justify-center p-4 text-center">
+                        <div className="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
+                            <div className="p-6">
+                                <Form onClose={() => setOpenEditForm(false)} onNewPost={editPost} post={post}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
