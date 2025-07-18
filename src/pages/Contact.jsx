@@ -1,5 +1,6 @@
 import Hero from "../components/Contact/Hero";
 import ContactForm from "../components/Contact/ContactForm";
+import FooterComponent from "../components/Footer";
 
 export default function Contact() {
     
@@ -18,6 +19,8 @@ export default function Contact() {
 
                     </div>
                 </div>
+            {/* Footer */}
+            <FooterComponent />
             </div>
         </>
     )
