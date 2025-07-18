@@ -1,8 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "flowbite-react";
+import Form from "./Form"
+import { useState } from "react";
 
-export default function Hero() {
+export default function Hero({ onNewPost }) {
+    const [formOpen, setFormOpen] = useState(false);
+    
+
     return (
         <div className="text-center py-12 md:py-20 px-4">
             {/* Main Heading */}
@@ -36,12 +41,26 @@ export default function Hero() {
                     <Button 
                         size="lg"
                         className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white"
+                        onClick={() => setFormOpen(!formOpen)}
                     >
                         <FontAwesomeIcon icon={faPlus}/>
                         <span className="ml-2">New Post</span>
                     </Button>
                 </div>
-                
+
+                {formOpen && (
+                    <div className="fixed inset-0 z-50 overflow-y-auto">
+                        <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={() => setFormOpen(false)}></div>
+                        <div className="flex min-h-full items-center justify-center p-4 text-center">
+                            <div className="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
+                                <div className="p-6">
+                                    <Form onClose={() => setFormOpen(false)} onNewPost={onNewPost} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 {/* Popular Tags */}
                 <div className="mt-6 flex flex-wrap justify-center gap-2">
                     <span className="text-sm text-gray-500 mt-1">Popular Tags:</span>
