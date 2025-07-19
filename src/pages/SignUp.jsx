@@ -1,0 +1,156 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope, faLock, faCheck } from '@fortawesome/free-solid-svg-icons';
+
+function SignUp() {
+    return (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-100 dark:from-gray-900 dark:to-gray-800 p-4">
+            <div className="w-full max-w-md">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+                    {/* Header */}
+                    <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 text-center">
+                        <h2 className="text-2xl font-bold text-white">Create Account</h2>
+                        <p className="text-blue-100 mt-1">Join Blogspace today</p>
+                    </div>
+
+                    {/* Form */}
+                    <div className="p-8">
+                        <form className="space-y-6">
+                            {/* Full Name Field */}
+                            <div>
+                                <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    Full Name
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <FontAwesomeIcon icon={faUser} className="h-5 w-5 text-gray-400" />
+                                    </div>
+                                    <input
+                                        id="fullName"
+                                        name="fullName"
+                                        type="text"
+                                        autoComplete="name"
+                                        required
+                                        className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        placeholder="Enter your full name"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Email Field */}
+                            <div>
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    Email Address
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <FontAwesomeIcon icon={faEnvelope} className="h-5 w-5 text-gray-400" />
+                                    </div>
+                                    <input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        autoComplete="email"
+                                        required
+                                        className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        placeholder="Enter your email"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Password Field */}
+                            <div>
+                                <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    Password
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <FontAwesomeIcon icon={faLock} className="h-5 w-5 text-gray-400" />
+                                    </div>
+                                    <input
+                                        id="password"
+                                        name="password"
+                                        type="password"
+                                        autoComplete="new-password"
+                                        required
+                                        className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        placeholder="Create a password"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Confirm Password Field */}
+                            <div>
+                                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    Confirm Password
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <FontAwesomeIcon icon={faCheck} className="h-5 w-5 text-gray-400" />
+                                    </div>
+                                    <input
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        type="password"
+                                        autoComplete="new-password"
+                                        required
+                                        className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                        placeholder="Confirm your password"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Terms and Conditions */}
+                            <div className="flex items-start">
+                                <div className="flex items-center h-5">
+                                    <input
+                                        id="terms"
+                                        name="terms"
+                                        type="checkbox"
+                                        required
+                                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                    />
+                                </div>
+                                <div className="ml-3 text-sm">
+                                    <label htmlFor="terms" className="font-medium text-gray-700 dark:text-gray-300">
+                                        I agree to the{' '} Terms Of Service And Privacy Policy
+                                        {/* <Link to="/terms" className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
+                                            Terms of Service
+                                        </Link>{' '}
+                                        and{' '}
+                                        <Link to="/privacy" className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
+                                            Privacy Policy
+                                        </Link> */}
+                                    </label>
+                                </div>
+                            </div>
+
+                            {/* Sign Up Button */}
+                            <div>
+                                <button
+                                    type="submit"
+                                    className="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150"
+                                >
+                                    Create Account
+                                </button>
+                            </div>
+                        </form>
+
+                        {/* Sign In Link */}
+                        <div className="mt-6 text-center">
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                                Already have an account?{' '}
+                                <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
+                                    Sign in
+                                </Link>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default SignUp;
