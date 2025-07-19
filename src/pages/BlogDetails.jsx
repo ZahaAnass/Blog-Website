@@ -2,6 +2,8 @@ import { useParams, Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faCalendarAlt, faUser, faTag, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'flowbite-react';
+import NavBar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export default function BlogDetails() {
     const location = useLocation();
@@ -53,6 +55,8 @@ export default function BlogDetails() {
     }
 
     return (
+        <>
+        <NavBar />
         <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4">
             <div className="max-w-4xl mx-auto pt-10">
                 <Link to="/blog">
@@ -126,5 +130,7 @@ export default function BlogDetails() {
                 </article>
             </div>
         </div>
+        <Footer />
+    </>
     );
 }

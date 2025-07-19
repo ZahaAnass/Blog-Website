@@ -52,6 +52,22 @@ function NavBar(){
                             ))}
                         </div>
 
+                        {/* Authentication */}
+                        <div className="ml-6 flex items-center">
+                            <Link
+                                to="/login"
+                                className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
+                            >
+                                Login
+                            </Link>
+                            <Link
+                                to="/signup"
+                                className="ml-4 px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
+                            >
+                                Sign Up
+                            </Link>
+                        </div>
+
                         {/* Mobile menu button */}
                         <div className="-mr-2 flex items-center md:hidden">
                             <Button

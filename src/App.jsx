@@ -7,13 +7,15 @@ import NotFound from './pages/NotFount'
 import Contact from './pages/Contact'
 import Blog from './pages/Blog'
 import BlogDetails from './pages/BlogDetails'
+import Login from './pages/Login'
+import SignUp from './pages/SignUp'
+import UserSettings from './pages/UserSetings'
 
 function App() {
 
   return (
     <>
       <Router>
-        <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -21,8 +23,10 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetails />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/user-settings" element={<UserSettings />} />
         </Routes>
-        <Footer />
       </Router>
     </>
   )

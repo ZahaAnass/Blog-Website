@@ -2,6 +2,8 @@ import FeaturesCard from "../components/ui/CustomCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faRocket, faHeart, faAward } from "@fortawesome/free-solid-svg-icons";
 import Hero from "../components/About/Hero";
+import NavBar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const About = () => {
   const values = [
@@ -28,6 +30,8 @@ const About = () => {
   ];
 
   return (
+    <>
+    <NavBar />
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 ">
       <div className=" mx-auto px-4 py-20 mt-16 dark:bg-gray-900">
         <div className="max-w-4xl mx-auto">
@@ -57,6 +61,8 @@ const About = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 

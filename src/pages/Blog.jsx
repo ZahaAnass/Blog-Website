@@ -1,6 +1,8 @@
 import BlogCard from "../components/Blog/BlogCard";
 import Hero from "../components/Blog/Hero";
 import { useState, useCallback } from "react";
+import NavBar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export default function Blog() {
     // Sample initial blog posts data
@@ -71,7 +73,9 @@ export default function Blog() {
     };
     
     return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 dark:from-gray-900 dark:to-gray-800">
+    <>
+    <NavBar />
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-100 dark:from-gray-900 dark:to-gray-800">
             <div className="mx-auto px-4 mt-8">
                 <div className="max-w-7xl mx-auto py-8">
                     {/* Hero Section */}
@@ -98,5 +102,7 @@ export default function Blog() {
                 </div>
             </div>
         </div>
+        <Footer />
+    </>
     )
 }

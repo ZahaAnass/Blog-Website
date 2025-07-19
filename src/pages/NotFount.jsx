@@ -2,6 +2,8 @@ import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
+import NavBar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const NotFound = () => {
   const location = useLocation();
@@ -14,6 +16,8 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
+    <>
+    <NavBar />
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex flex-col items-center justify-center p-6">
       <div className="max-w-2xl w-full bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden">
         {/* Header */}
@@ -63,6 +67,8 @@ const NotFound = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 
