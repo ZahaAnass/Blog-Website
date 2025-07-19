@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEnvelope, faLock, faCamera, faSignOutAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEnvelope, faLock, faCamera, faSignOutAlt, faCheck, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 function UserSettings() {
     const [activeTab, setActiveTab] = useState('profile');
@@ -36,18 +36,30 @@ function UserSettings() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100 dark:from-gray-900 dark:to-gray-800 p-4 py-12">
-            <div className="max-w-4xl mx-auto">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100 dark:from-gray-900 dark:to-gray-800 p-4 md:p-8 py-12">
+            <div className="max-w-6xl mx-auto">
+                {/* Back Button - Sticky on larger screens */}
+                <div className="mb-6 md:sticky md:top-6 z-10">
+                    <Link 
+                        to="/" 
+                        className="inline-flex items-center px-4 py-2.5 bg-white dark:bg-gray-800 rounded-lg shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                    >
+                        <FontAwesomeIcon icon={faArrowLeft} className="mr-2 h-4 w-4"/>
+                        Back to Home
+                    </Link>
+                </div>
+                
+                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+
                     {/* Header */}
                     <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 text-center">
                         <h2 className="text-2xl font-bold text-white">Account Settings</h2>
                         <p className="text-blue-100 mt-1">Manage your profile and preferences</p>
                     </div>
 
-                    <div className="flex flex-col md:flex-row">
-                        {/* Sidebar */}
-                        <div className="w-full md:w-64 bg-gray-50 dark:bg-gray-700 p-4 border-r border-gray-200 dark:border-gray-600">
+                    <div className="flex flex-col lg:flex-row">
+                        {/* Sidebar - Sticky on large screens */}
+                        <div className="w-full lg:w-72 xl:w-80 bg-gray-50 dark:bg-gray-700 p-6 border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-600 lg:sticky lg:top-6 lg:h-[calc(100vh-3rem)] lg:overflow-y-auto">
                             <div className="flex flex-col items-center py-4">
                                 <div className="relative mb-4">
                                     <img 
@@ -92,7 +104,7 @@ function UserSettings() {
                         </div>
 
                         {/* Main Content */}
-                        <div className="flex-1 p-8">
+                        <div className="flex-1 p-6 md:p-8 lg:p-10">
                             {activeTab === 'profile' ? (
                                 <form onSubmit={handleSubmit}>
                                     <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-6">Profile Information</h3>
@@ -154,9 +166,9 @@ function UserSettings() {
                                         </div>
 
                                         <div className="pt-4">
-                                            <button
+                                                <button
                                                 type="submit"
-                                                className="w-full md:w-auto px-6 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150"
+                                                className="w-full md:w-auto px-8 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 hover:shadow-md transform hover:-translate-y-0.5"
                                             >
                                                 Save Changes
                                             </button>
@@ -229,9 +241,9 @@ function UserSettings() {
                                         </div>
 
                                         <div className="pt-4">
-                                            <button
+                                                <button
                                                 type="submit"
-                                                className="w-full md:w-auto px-6 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150"
+                                                className="w-full md:w-auto px-8 py-3 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 hover:shadow-md transform hover:-translate-y-0.5"
                                             >
                                                 Update Password
                                             </button>
