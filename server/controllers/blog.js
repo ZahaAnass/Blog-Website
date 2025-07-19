@@ -29,8 +29,19 @@ const createBlog = async (req, res) => {
 }
 
 const updateBlog = async (req, res) => {
-    const blog = await Blog.findByIdAndUpdate(req.params.id, req.body)
-    res.status(200).json({ blog })
+    const {
+        body: { title, excerpt, imageUrl, category, content },
+        params: { id: blogId },
+        user: { userId }
+    } = req
+    if(!blogId){
+        throw new BadRequestError("Please provide blog id")
+    }
+    const blog = await Blog.findOneAndUpdate({ _id: blogId, authorId: userId }, { title, excerpt, imageUrl, category, content })
+    if(!blog){
+        throw new NotFoundError(`No blog with id: ${blogId}`)
+    }
+    res.status(StatusCodes.OK).json({ blog })
 }
 
 const deleteBlog = async (req, res) => {
