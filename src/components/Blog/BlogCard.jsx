@@ -1,4 +1,5 @@
 import { Card } from "flowbite-react";
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCalendarAlt, faArrowRight, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "flowbite-react";
@@ -56,19 +57,21 @@ export default function BlogCard({id, title, excerpt, imageUrl, category, date, 
                 </div>
                 
                 {/* Action Buttons */}
-                <div className="mt-6 flex items-center justify-between">
-                    <Button color="blue" size="sm" className="group w-xl mr-2">
-                        Read More
-                        <FontAwesomeIcon 
-                            icon={faArrowRight} 
-                            className="ml-2 h-3 w-3 transition-transform group-hover:translate-x-1" 
-                        />
-                    </Button>
-                    <div className="flex space-x-2">
-                        <Button color="gray" size="sm" className="!p-2 !px-4" onClick={() => setOpenEditForm(true)}>
+                <div className="mt-6 flex items-center gap-2 w-full">
+                    <Link to={`/blog/${id}`} state={{ post }} className="flex-2">
+                        <Button color="blue" size="sm" className="group flex w-full justify-center">
+                            Read More
+                            <FontAwesomeIcon 
+                                icon={faArrowRight} 
+                                className="ml-2 h-3 w-3 transition-transform group-hover:translate-x-1" 
+                            />
+                        </Button>
+                    </Link>
+                    <div className="flex-1 flex justify-end space-x-2">
+                        <Button color="gray" size="sm" className="!p-2 !px-4 flex-1" onClick={() => setOpenEditForm(true)}>
                             <FontAwesomeIcon icon={faEdit} className="h-4 w-4" />
                         </Button>
-                        <Button color="red" size="sm" className="!p-2 !px-4" onClick={() => deletePost(id)}>
+                        <Button color="red" size="sm" className="!p-2 !px-4 flex-1" onClick={() => deletePost(id)}>
                             <FontAwesomeIcon icon={faTrash} className="h-4 w-4" />
                         </Button>
                     </div>
