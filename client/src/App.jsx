@@ -7,7 +7,6 @@ import Blog from './pages/Blog'
 import BlogDetails from './pages/BlogDetails'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
-import UserSettings from './pages/UserSetings'
 
 function App() {
 
@@ -23,7 +22,6 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/user-settings" element={<UserSettings />} />
         </Routes>
       </Router>
     </>
