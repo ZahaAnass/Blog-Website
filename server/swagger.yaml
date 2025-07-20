@@ -1,0 +1,499 @@
+openapi: 3.0.0
+info:
+  title: Blogs-API
+  contact: {}
+  version: '1.0'
+  x-codegen-settings:
+    Nullify404: false
+    GenerateAsyncCode: true
+    UseMethodPrefix: false
+    UseModelPostfix: false
+    UseControllerPrefix: true
+    UseEnumPostfix: false
+    CollectParameters: false
+    UseConstructorsForConfig: false
+    UseCommonSDKLibrary: false
+    iOSUseAppInfoPlist: false
+    AndroidUseAppManifest: false
+    BodySerialization: 0
+    UserAgent: '{language}-SDK/{version} [OS: {os-info}, Engine: {engine}/{engine-version}]'
+    EnableAdditionalModelProperties: false
+    PreserveParameterOrder: true
+    AppendContentHeaders: true
+    iOSGenerateCoreData: false
+    GenerateInterfaces: false
+    NodeHttpClient: NODE_REQUEST
+    ValidateRequiredParameters: true
+    JavaUsePropertiesConfig: false
+    Timeout: 30
+    StoreTimezoneInformation: false
+    EnablePHPComposerVersionString: false
+    EnableLogging: true
+    ArraySerialization: Indexed
+    ModelSerializationScheme: Json
+    UseExceptionPrefix: true
+    RunscopeEnabled: false
+    AndroidHttpClient: ANDROID_OK
+    ObjCHttpClient: UNIREST
+    CSharpHttpClient: UNIREST
+    PHPHttpClient: UNIREST
+    JavaHttpClient: JAVA_OK
+    ParameterArrayFormat: ParamArrayWithIndex
+    SecurityProtocols:
+    - Ssl3
+    - Tls
+    GenerateTravisConfig: false
+    GenerateCircleConfig: false
+    GenerateAppveyorConfig: false
+    GenerateJenkinsConfig: false
+    EnableHttpCache: false
+    Retries: 0
+    RetryInterval: 1
+    GenerateAdvancedDocs: true
+    UnderscoreNumbers: true
+    UseSingletonPattern: true
+    DisableLinting: false
+    ApplyCustomizations: []
+    SortResources: false
+    AllowSkippingSSLCertVerification: false
+    DoNotSplitWords:
+    - oauth
+    EnableGlobalUserAgent: true
+    ReturnCompleteHttpResponse: true
+    GenerateModels: true
+    GenerateExceptions: true
+    IgnoreIfNullJson: false
+    DisableDocs: false
+    LiftParameterDescriptionFromCustomType: false
+    ThrowForHttpErrorStatusCodes: true
+    ResponseMapping:
+      Type: Simple
+    ForceKeywordArgsInRuby: false
+    SymbolizeHashKeysInRuby: true
+    UsageExampleEndpoint:
+      Description: ''
+      EndpointGroupName: ''
+      EndpointName: ''
+    IsLatestVersion: false
+    EnableImmutableModels: false
+    GenerateEnums: true
+    BackoffFactor: 2
+    StatusCodesToRetry:
+    - 408
+    - 413
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+    - 521
+    - 522
+    - 524
+    RequestMethodsToRetry:
+    - GET
+    - PUT
+    UserConfigurableRetries: true
+    UseEndpointMethodName: false
+    EncodeTemplateParameters: true
+    GenerateExamplesForOptionalFields: false
+    MultitargetDotnetVersions: false
+    BackoffMax: 0
+    RetryOnTimeout: true
+    EnableCookies: false
+    EnableJsonPassThroughForAny: false
+    PascalCaseEnumForCSharp: false
+    PascalCaseEnumForTypeScript: false
+    DisableMultipleAuth: false
+    AddSingleAuthDeprecatedCode: false
+    EnableExperimentalTypeCombinatorGeneration: false
+    ErrorTemplates: {}
+    UseSecuritySchemeNameForSingleAuth: false
+    EnableModelKeywordArgsInRuby: true
+    NullifyEmptyResponses: false
+    ExtendedAdditionalPropertiesSupport: true
+    EnforceStandardizedCasing: true
+  x-server-configuration:
+    default-environment: production
+    default-server: Server 1
+    environments:
+    - name: production
+      servers:
+      - name: Server 1
+        url: blog-api-production-e9fd.up.railway.app
+      - name: Server 2
+        url: blog-api-production-e9fd.up.railway.app
+    parameters: []
+  x-image-uri: ''
+servers:
+- url: blog-api-production-e9fd.up.railway.app
+  variables: {}
+- url: blog-api-production-e9fd.up.railway.app
+  variables: {}
+paths:
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: Register User
+      operationId: RegisterUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/RegisterUserRequest'
+              - example:
+                  name: susan
+                  email: susan@gmail.com
+                  password: secret
+            example:
+              name: susan
+              email: susan@gmail.com
+              password: secret
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: blog-api-production-e9fd.up.railway.app
+        variables: {}
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+        ErrorTemplates: {}
+        SkipAdditionalHeaders: false
+      x-unitTests: []
+      x-server-name: Server 2
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Login User
+      operationId: LoginUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/LoginUserRequest'
+              - example:
+                  email: peter@gmail.com
+                  password: secret
+            example:
+              email: peter@gmail.com
+              password: secret
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: blog-api-production-e9fd.up.railway.app
+        variables: {}
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+        ErrorTemplates: {}
+        SkipAdditionalHeaders: false
+      x-unitTests: []
+      x-server-name: Server 1
+  /blogs:
+    post:
+      tags:
+      - Blog
+      summary: Create Blog
+      operationId: CreateBlog
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateBlogRequest'
+              - example:
+                  title: Exploring Traditional Moroccan Food
+                  excerpt: From couscous to tagine, Morocco offers a rich culinary heritage worth discovering.
+                  imageUrl: https://example.com/images/moroccan-food.jpg
+                  category: Culture
+                  content: Moroccan cuisine blends Amazigh, Arab, and Mediterranean influences. Spices like saffron, cumin, and cinnamon are central to traditional dishes, making every meal a flavorful experience...
+            example:
+              title: Exploring Traditional Moroccan Food
+              excerpt: From couscous to tagine, Morocco offers a rich culinary heritage worth discovering.
+              imageUrl: https://example.com/images/moroccan-food.jpg
+              category: Culture
+              content: Moroccan cuisine blends Amazigh, Arab, and Mediterranean influences. Spices like saffron, cumin, and cinnamon are central to traditional dishes, making every meal a flavorful experience...
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: blog-api-production-e9fd.up.railway.app
+        variables: {}
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+        ErrorTemplates: {}
+        SkipAdditionalHeaders: false
+      x-unitTests: []
+      x-server-name: Server 1
+    get:
+      tags:
+      - Blog
+      summary: Get All Blogs
+      operationId: GetAllBlogs
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: blog-api-production-e9fd.up.railway.app
+        variables: {}
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+        ErrorTemplates: {}
+        SkipAdditionalHeaders: false
+      x-unitTests: []
+      x-server-name: Server 1
+  /blogs/{id}:
+    patch:
+      tags:
+      - Blog
+      summary: Update Blog
+      operationId: UpdateBlog
+      parameters:
+      - name: id
+        in: path
+        description: Blog ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateBlogRequest'
+              - example:
+                  title: Updated Blog Title
+                  excerpt: Updated excerpt for the blog post.
+                  imageUrl: https://example.com/images/updated-image.jpg
+                  category: Technology
+                  content: Updated content for the blog post...
+            example:
+              title: Updated Blog Title
+              excerpt: Updated excerpt for the blog post.
+              imageUrl: https://example.com/images/updated-image.jpg
+              category: Technology
+              content: Updated content for the blog post...
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: blog-api-production-e9fd.up.railway.app
+        variables: {}
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+        ErrorTemplates: {}
+        SkipAdditionalHeaders: false
+      x-unitTests: []
+      x-server-name: Server 2
+    get:
+      tags:
+      - Blog
+      summary: Get Single Blog
+      operationId: GetSingleBlog
+      parameters:
+      - name: id
+        in: path
+        description: Blog ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: blog-api-production-e9fd.up.railway.app
+        variables: {}
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+        ErrorTemplates: {}
+        SkipAdditionalHeaders: false
+      x-unitTests: []
+      x-server-name: Server 2
+    delete:
+      tags:
+      - Blog
+      summary: Delete Blog
+      operationId: DeleteBlog
+      parameters:
+      - name: id
+        in: path
+        description: Blog ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: blog-api-production-e9fd.up.railway.app
+        variables: {}
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+        ErrorTemplates: {}
+        SkipAdditionalHeaders: false
+      x-unitTests: []
+      x-server-name: Server 1
+components:
+  schemas:
+    RegisterUserRequest:
+      title: RegisterUserRequest
+      required:
+      - name
+      - email
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: susan
+        email: susan@gmail.com
+        password: secret
+    CreateBlogRequest:
+      title: CreateBlogRequest
+      required:
+      - title
+      - excerpt
+      - imageUrl
+      - category
+      - content
+      type: object
+      properties:
+        title:
+          type: string
+        excerpt:
+          type: string
+        imageUrl:
+          type: string
+        category:
+          type: string
+        content:
+          type: string
+      example:
+        title: Exploring Traditional Moroccan Food
+        excerpt: From couscous to tagine, Morocco offers a rich culinary heritage worth discovering.
+        imageUrl: https://example.com/images/moroccan-food.jpg
+        category: Culture
+        content: Moroccan cuisine blends Amazigh, Arab, and Mediterranean influences. Spices like saffron, cumin, and cinnamon are central to traditional dishes, making every meal a flavorful experience...
+    UpdateBlogRequest:
+      title: UpdateBlogRequest
+      required:
+      - title
+      - excerpt
+      - imageUrl
+      - category
+      - content
+      type: object
+      properties:
+        title:
+          type: string
+        excerpt:
+          type: string
+        imageUrl:
+          type: string
+        category:
+          type: string
+        content:
+          type: string
+      example:
+        title: Updated Blog Title
+        excerpt: Updated excerpt for the blog post.
+        imageUrl: https://example.com/images/updated-image.jpg
+        category: Technology
+        content: Updated content for the blog post...
+    LoginUserRequest:
+      title: LoginUserRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: peter@gmail.com
+        password: secret
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Auth
+  description: ''
+- name: Blog
+  description: ''
