@@ -41,7 +41,8 @@ const updateBlog = async (req, res) => {
     if(!blog){
         throw new NotFoundError(`No blog with id: ${blogId}`)
     }
-    res.status(StatusCodes.OK).json({ blog })
+    const updatedBlog = await Blog.findOne({ _id: blogId, authorId: userId })
+    res.status(StatusCodes.OK).json({ blog: updatedBlog })
 }
 
 const deleteBlog = async (req, res) => {
