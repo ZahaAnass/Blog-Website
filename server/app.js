@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 
 // routes
 app.use("/api/v1/auth", authRoutes)
-app.use("/api/v1/blog", authenticateUser, blogRoutes)
+app.use("/api/v1/blogs", authenticateUser, blogRoutes)
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
