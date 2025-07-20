@@ -1,9 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock, faCheck, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { UserSignUp } from '../api/api';
 
 function SignUp() {
+
+    const [fullName, setFullName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
+
+    const handleFormSubmit = async (e) => {
+        e.preventDefault()
+        try {
+    
+            if (fullName.length <= 2) {
+                console.error('Full name must be longer than 2 characters');
+                return;
+            }
+            if (email.length <= 5 || !email.includes('@')) {
+                console.error('Please enter a valid email');
+                return;
+            }
+            if (password.length <= 8) {
+                console.error('Password must be longer than 8 characters');
+                return;
+            }
+            if (password !== confirmPassword) {
+                console.error('Passwords do not match');
+                return;
+            }
+            
+            const response = await UserSignUp({
+                name: fullName,
+                email: email,
+                password: password
+            });
+            console.log('Signup successful:', response);
+            
+        } catch (error) {
+            console.error('Signup failed:', {
+                message: error.message,
+                response: error.response?.data,
+                status: error.response?.status
+            });
+        }
+    }
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-100 dark:from-gray-900 dark:to-gray-800 p-4 md:p-8">
             <div className="w-full max-w-md">
@@ -27,7 +71,7 @@ function SignUp() {
 
                     {/* Form */}
                     <div className="p-8">
-                        <form className="space-y-6">
+                        <form className="space-y-6" onSubmit={handleFormSubmit}>
                             {/* Full Name Field */}
                             <div>
                                 <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -45,6 +89,8 @@ function SignUp() {
                                         required
                                         className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                         placeholder="Enter your full name"
+                                        value={fullName}
+                                        onChange={(e) => setFullName(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -66,6 +112,8 @@ function SignUp() {
                                         required
                                         className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                         placeholder="Enter your email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -87,6 +135,8 @@ function SignUp() {
                                         required
                                         className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                         placeholder="Create a password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </div>
                             </div>
@@ -108,6 +158,8 @@ function SignUp() {
                                         required
                                         className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                         placeholder="Confirm your password"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
                                     />
                                 </div>
                             </div>
