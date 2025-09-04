@@ -10,25 +10,25 @@ function SignUp() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [error, setError] = useState('')
 
     const handleFormSubmit = async (e) => {
         e.preventDefault()
         try {
-    
             if (fullName.length <= 2) {
-                console.error('Full name must be longer than 2 characters');
+                setError('Full name must be longer than 2 characters');
                 return;
             }
             if (email.length <= 5 || !email.includes('@')) {
-                console.error('Please enter a valid email');
+                setError('Please enter a valid email');
                 return;
             }
             if (password.length <= 8) {
-                console.error('Password must be longer than 8 characters');
+                setError('Password must be longer than 8 characters');
                 return;
             }
             if (password !== confirmPassword) {
-                console.error('Passwords do not match');
+                setError(`Passwords do not match since ${password} and ${confirmPassword}`);
                 return;
             }
             
@@ -38,13 +38,15 @@ function SignUp() {
                 password: password
             });
             console.log('Signup successful:', response);
-            
+            setError('');
+
         } catch (error) {
             console.error('Signup failed:', {
                 message: error.message,
                 response: error.response?.data,
                 status: error.response?.status
             });
+            setError(error.response.data.err || 'Signup failed');
         }
     }
 
@@ -68,6 +70,13 @@ function SignUp() {
                         <h2 className="text-2xl font-bold text-white">Create Account</h2>
                         <p className="text-blue-100 mt-1">Join Blogspace today</p>
                     </div>
+
+                    {/* Error Message */}
+                    {error && (
+                        <div className="p-4 m-4 mb-[-10px] text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                            <span className="font-medium">Error: </span>{error}
+                        </div>
+                    )}
 
                     {/* Form */}
                     <div className="p-8">
