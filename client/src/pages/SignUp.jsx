@@ -1,52 +1,64 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock, faCheck, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { UserSignUp } from '../api/api';
 
 function SignUp() {
 
+    const navigate = useNavigate();
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
 
     const handleFormSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        
+        setError('');
+        setSuccess('');
+        
+        if (fullName.length <= 2) {
+            setError('Full name must be longer than 2 characters');
+            return;
+        }
+        if (email.length <= 5 || !email.includes('@')) {
+            setError('Please enter a valid email');
+            return;
+        }
+        if (password.length <= 8) {
+            setError('Password must be longer than 8 characters');
+            return;
+        }
+        if (password !== confirmPassword) {
+            setError('Passwords do not match');
+            return;
+        }
+        
         try {
-            if (fullName.length <= 2) {
-                setError('Full name must be longer than 2 characters');
-                return;
-            }
-            if (email.length <= 5 || !email.includes('@')) {
-                setError('Please enter a valid email');
-                return;
-            }
-            if (password.length <= 8) {
-                setError('Password must be longer than 8 characters');
-                return;
-            }
-            if (password !== confirmPassword) {
-                setError(`Passwords do not match since ${password} and ${confirmPassword}`);
-                return;
-            }
-            
             const response = await UserSignUp({
                 name: fullName,
                 email: email,
                 password: password
             });
-            console.log('Signup successful:', response);
-            setError('');
+            
+            setSuccess('Signup successful! Redirecting to login...');
+            setTimeout(() => navigate("/login"), 1500);
+            
+        } catch (err) {
+            // console.error('Signup error:', err);
+            if (err.response && err.response.data) {
+                const errorMessage = err.response.data.message || 
+                                    err.response.data.error || 
+                                    err.response.data.err || 
+                                    'An error occurred during signup';
 
-        } catch (error) {
-            console.error('Signup failed:', {
-                message: error.message,
-                response: error.response?.data,
-                status: error.response?.status
-            });
-            setError(error.response.data.err || 'Signup failed');
+                setError(errorMessage);
+            } else {
+                setError(err.message || 'An error occurred during signup. Please try again.');
+            }
         }
     }
 
@@ -75,6 +87,13 @@ function SignUp() {
                     {error && (
                         <div className="p-4 m-4 mb-[-10px] text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
                             <span className="font-medium">Error: </span>{error}
+                        </div>
+                    )}
+
+                    {/* Success Message */}
+                    {success && (
+                        <div className="p-4 m-4 mb-[-10px] text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+                            <span className="font-medium">Success: </span>{success}
                         </div>
                     )}
 
