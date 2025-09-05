@@ -2,14 +2,22 @@ import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faBook } from "@fortawesome/free-solid-svg-icons"
 import { Button } from "flowbite-react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function NavBar(){
 
     const location = useLocation();
+    const user = localStorage.getItem('user') ?? null;
+    const navigate = useNavigate()
 
     const ToggleNav = () => {
         document.getElementById('navbar-default').classList.toggle('hidden');
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        navigate('/');
     }
 
     return(
@@ -53,20 +61,37 @@ function NavBar(){
                         </div>
 
                         {/* Authentication */}
-                        <div className="ml-6 flex items-center">
-                            <Link
-                                to="/login"
-                                className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
-                            >
-                                Login
-                            </Link>
-                            <Link
-                                to="/signup"
-                                className="ml-4 px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
-                            >
-                                Sign Up
-                            </Link>
-                        </div>
+                        {user ? (
+                            <div className="ml-6 flex items-center">
+                                <Link
+                                    to="/blog"
+                                    className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
+                                >
+                                    Blog
+                                </Link>
+                                <button
+                                    onClick={handleLogout}
+                                    className="ml-4 px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
+                                >
+                                    Logout
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="ml-6 flex items-center">
+                                <Link
+                                    to="/login"
+                                    className="px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
+                                >
+                                    Login
+                                </Link>
+                                <Link
+                                    to="/signup"
+                                    className="ml-4 px-3 py-2 rounded-md text-sm font-medium transition-colors text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700/30"
+                                >
+                                    Sign Up
+                                </Link>
+                            </div>
+                        )}
 
                         {/* Mobile menu button */}
                         <div className="-mr-2 flex items-center md:hidden">
