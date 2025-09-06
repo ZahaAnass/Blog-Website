@@ -38,6 +38,13 @@ export const getBlogById = async (id, token) => {
     return response
 }
 
+export const getBlogCategories = async (token) => {
+    const response = await API.get("/blogs/categories", {
+        headers: { Authorization: `Bearer ${token}` }
+    })
+    return response
+}
+
 export const updateBlog = async (id, blog, token) => {
     const response = await API.put(`/blog/${id}`, blog, {
         headers: { Authorization: `Bearer ${token}` }
