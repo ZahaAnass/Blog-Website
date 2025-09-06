@@ -1,0 +1,156 @@
+{
+    "users": [
+      {
+        "_id": {"$oid": "64a1b2c3d4e5f6789abc0001"},
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "password": "$2a$10$rOzJlV8tH9X2vKmPqY7wXOzKjL3mN4pQ5tS6uV7wX8yZ9aB0cD1eF"
+      },
+      {
+        "_id": {"$oid": "64a1b2c3d4e5f6789abc0002"},
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com", 
+        "password": "$2a$10$sP0aKwV9uI0Y3xLnRqZ8zP1bLk4nO5qS6uW8xX9zA0bC1dE2fG3hH"
+      },
+      {
+        "_id": {"$oid": "64a1b2c3d4e5f6789abc0003"},
+        "name": "Mike Johnson",
+        "email": "mike.johnson@example.com",
+        "password": "$2a$10$tQ1bLxW0vJ1Z4yMoSrA9aQ2cMl5oP6rT7vY9yZ0aB1cD2eF3gH4iI"
+      },
+      {
+        "_id": {"$oid": "64a1b2c3d4e5f6789abc0004"},
+        "name": "Sarah Wilson",
+        "email": "sarah.wilson@example.com",
+        "password": "$2a$10$uR2cMyX1wK2a5zNpTsB0bR3dNm6pQ7sU8wZ0aB1cD2eF3gH4iJ5kK"
+      },
+      {
+        "_id": {"$oid": "64a1b2c3d4e5f6789abc0005"},
+        "name": "David Brown",
+        "email": "david.brown@example.com",
+        "password": "$2a$10$vS3dNzY2xL3b6aOqUtC1cS4eOn7qR8tV9xa1bC2dE3fG4hI5jK6lL"
+      },
+      {
+        "_id": {"$oid": "64a1b2c3d4e5f6789abc0006"},
+        "name": "Emily Davis",
+        "email": "emily.davis@example.com",
+        "password": "$2a$10$wT4eOaZ3yM4c7bPrVuD2dT5fPo8rS9uW0yb2cD3eF4gH5iJ6kL7mM"
+      },
+      {
+        "_id": {"$oid": "64a1b2c3d4e5f6789abc0007"},
+        "name": "Alex Martinez",
+        "email": "alex.martinez@example.com",
+        "password": "$2a$10$xU5fPba4zN5d8cQsWvE3eU6gQp9sT0vX1zc3dE4fG5hI6jK7lM8nN"
+      },
+      {
+        "_id": {"$oid": "64a1b2c3d4e5f6789abc0008"},
+        "name": "Lisa Anderson",
+        "email": "lisa.anderson@example.com",
+        "password": "$2a$10$yV6gQcb5aO6e9dRtXwF4fV7hRq0tU1wY2ad4eF5gH6iJ7kL8mN9oO"
+      },
+      {
+        "_id": {"$oid": "64a1b2c3d4e5f6789abc0009"},
+        "name": "Chris Taylor",
+        "email": "chris.taylor@example.com",
+        "password": "$2a$10$zW7hRdc6bP7f0eSuYxG5gW8iSr1uV2xZ3be5fG6hI7jK8lM9nO0pP"
+      },
+      {
+        "_id": {"$oid": "64a1b2c3d4e5f6789abc0010"},
+        "name": "Amanda White",
+        "email": "amanda.white@example.com",
+        "password": "$2a$10$aX8iSed7cQ8g1fTvZyH6hX9jTs2vW3ya4cf6gH7iJ8kL9mN0oP1qQ"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "Getting Started with React Hooks",
+        "excerpt": "Learn how to use React Hooks to simplify your functional components and manage state effectively.",
+        "imageUrl": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "category": ["React", "JavaScript", "Hooks"],
+        "date": "15/6/2023",
+        "content": "Getting Started with React Hooks\n\nReact Hooks transformed how we write React components when they launched in version 16.8. They allow you to use state and other React features in functional components, eliminating the need for class components in most cases.\n\nThe most essential Hook is useState, which lets you add state to functional components. Instead of writing a class with a constructor and this.state, you can simply declare state variables and their update functions in one line.\n\nThe useEffect Hook handles side effects like API calls, subscriptions, and DOM manipulation. It combines the functionality of componentDidMount, componentDidUpdate, and componentWillUnmount from class components into a single, more intuitive API.\n\nHooks follow two important rules: they must be called at the top level of your component (never inside loops or conditions), and they can only be used in functional components or other custom Hooks.\n\nThe beauty of Hooks lies in their composability. You can create custom Hooks to share stateful logic between components, making your code more reusable and organized. This was difficult to achieve with class components without complex patterns.\n\nuseContext simplifies consuming React Context, while useReducer provides a Redux-like pattern for complex state management. These Hooks give you powerful tools for managing application state without external libraries.\n\nConverting from class components to Hooks often results in cleaner, more readable code. You'll find yourself writing less boilerplate and focusing more on your application's actual logic.\n\nThe learning curve is gentle if you start with useState and useEffect, then gradually explore other Hooks as your needs grow. The React DevTools extension helps visualize Hook state during development.\n\nHooks represent React's modern approach to component development. They make functional programming patterns more accessible and lead to more maintainable, testable code. Once you start using Hooks, you'll wonder how you ever managed without them.",
+        "authorId": {"$oid": "64a1b2c3d4e5f6789abc0001"}
+      },
+      {
+        "title": "Mastering Tailwind CSS",
+        "excerpt": "Discover how to build beautiful, responsive designs with Tailwind CSS utility-first framework.",
+        "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+        "category": ["CSS", "Tailwind", "Design"],
+        "date": "10/6/2023",
+        "content": "Mastering Tailwind CSS\n\nTailwind CSS is a utility-first CSS framework that's revolutionizing how developers approach styling. Instead of writing custom CSS classes, you compose designs using pre-built utility classes directly in your HTML markup.\n\nThe utility-first approach means you'll use classes like 'bg-blue-500', 'text-white', and 'p-4' instead of creating custom CSS classes. This might feel strange at first, but it leads to faster development and more maintainable code once you get used to it.\n\nTailwind's design system is built around consistent spacing, typography, and color scales. The framework provides a carefully crafted set of values that ensure your designs look professional and cohesive without needing to make design decisions from scratch.\n\nResponsive design becomes incredibly simple with Tailwind's mobile-first breakpoint system. You can add responsive variants like 'md:text-lg' or 'lg:grid-cols-3' to apply styles at specific screen sizes, making responsive layouts intuitive and declarative.\n\nThe framework excels at component-based development. You can create reusable components by extracting common utility combinations, either through CSS classes or component templates in your JavaScript framework of choice.\n\nTailwind's configuration system is highly customizable. You can extend the default theme, add custom colors, modify spacing scales, and even create your own utility classes to match your brand and design requirements.\n\nThe purge feature ensures your production builds only include the CSS you actually use, resulting in incredibly small file sizes. This makes Tailwind performant even though it includes thousands of utility classes by default.\n\nState variants like 'hover:', 'focus:', and 'disabled:' make interactive styling straightforward. You can handle complex state combinations without writing custom CSS or managing class toggling in JavaScript.\n\nMastering Tailwind means embracing its philosophy of utility-first design. Once you stop fighting the approach and start thinking in utilities, you'll find yourself building interfaces faster and with more consistency than traditional CSS methods allow.",
+        "authorId": {"$oid": "64a1b2c3d4e5f6789abc0002"}
+      },
+      {
+        "title": "Node.js Best Practices for 2024",
+        "excerpt": "Essential guidelines and patterns for building scalable Node.js applications in production.",
+        "imageUrl": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+        "category": ["Node.js", "Backend", "Best Practices"],
+        "date": "22/7/2023",
+        "content": "Node.js Best Practices for 2024\n\nBuilding production-ready Node.js applications requires following established best practices that ensure scalability, security, and maintainability. These guidelines have evolved from years of community experience and real-world deployment scenarios.\n\nStructure your application using a layered architecture pattern. Separate your routes, controllers, services, and data access layers. This separation makes your code more testable, maintainable, and allows team members to work on different parts of the application independently.\n\nImplement proper error handling throughout your application. Use try-catch blocks for async operations, create custom error classes, and establish a centralized error handling middleware. Never let unhandled promise rejections crash your application.\n\nSecurity should be built into every layer of your application. Use helmet.js for security headers, implement rate limiting, validate all input data, and keep your dependencies updated. Always use HTTPS in production and implement proper authentication and authorization.\n\nOptimize performance by implementing caching strategies, using connection pooling for databases, and monitoring memory usage. Consider using clustering to take advantage of multi-core systems, and implement proper logging for debugging and monitoring.\n\nUse environment variables for configuration and never commit sensitive data to version control. Implement proper CI/CD pipelines and use tools like PM2 for process management in production.\n\nWrite comprehensive tests including unit tests, integration tests, and end-to-end tests. Use tools like Jest for testing and implement code coverage reporting to ensure your codebase is properly tested.\n\nMonitor your application in production using tools like New Relic, DataDog, or open-source alternatives. Set up alerts for critical metrics and implement health check endpoints.\n\nFollowing these practices will help you build robust Node.js applications that can handle production workloads effectively.",
+        "authorId": {"$oid": "64a1b2c3d4e5f6789abc0003"}
+      },
+      {
+        "title": "Introduction to GraphQL",
+        "excerpt": "Understanding GraphQL fundamentals and how it revolutionizes API development and data fetching.",
+        "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+        "category": ["GraphQL", "API", "Web Development"],
+        "date": "8/8/2023",
+        "content": "Introduction to GraphQL\n\nGraphQL is a query language and runtime for APIs that was developed by Facebook and open-sourced in 2015. It provides a more efficient, powerful, and flexible alternative to REST APIs by allowing clients to request exactly the data they need.\n\nUnlike REST APIs where you have multiple endpoints for different resources, GraphQL uses a single endpoint. Clients specify exactly what data they want in their queries, eliminating over-fetching and under-fetching problems common with REST APIs.\n\nThe GraphQL schema defines the shape of your API and serves as a contract between the client and server. It describes what queries are possible, what fields can be requested, and what types of data will be returned. This schema-first approach improves development workflows and enables better tooling.\n\nQueries in GraphQL are hierarchical and mirror the shape of the JSON response. You can fetch related data in a single request, reducing the number of network round trips and improving application performance.\n\nMutations handle data modifications in GraphQL, similar to POST, PUT, and DELETE operations in REST. Subscriptions enable real-time data updates, allowing clients to receive live updates when data changes on the server.\n\nGraphQL provides excellent developer experience with features like introspection, where the API can be queried for information about itself. This enables powerful tools like GraphiQL and GraphQL Playground for exploring and testing APIs.\n\nThe type system in GraphQL is strongly typed, providing better error detection at development time. You can define custom scalar types, enums, interfaces, and unions to model your data accurately.\n\nResolver functions are responsible for fetching data for each field in your schema. This gives you fine-grained control over data fetching and allows you to optimize queries at the field level.\n\nGraphQL is language and database agnostic, making it suitable for any backend technology stack. Popular implementations exist for JavaScript, Python, Java, Go, and many other languages.",
+        "authorId": {"$oid": "64a1b2c3d4e5f6789abc0004"}
+      },
+      {
+        "title": "TypeScript for JavaScript Developers",
+        "excerpt": "A comprehensive guide to adopting TypeScript in existing JavaScript projects and understanding its benefits.",
+        "imageUrl": "https://images.unsplash.com/photo-1516116216624-53e697fedbea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+        "category": ["TypeScript", "JavaScript", "Programming"],
+        "date": "14/8/2023",
+        "content": "TypeScript for JavaScript Developers\n\nTypeScript is a superset of JavaScript that adds static type definitions to the language. Developed by Microsoft, it compiles to clean, readable JavaScript and runs anywhere JavaScript runs, making it an excellent choice for large-scale application development.\n\nThe primary benefit of TypeScript is catching errors at compile time rather than runtime. Type annotations help identify potential issues before your code reaches production, reducing bugs and improving code reliability.\n\nGetting started with TypeScript is straightforward. You can gradually adopt it in existing JavaScript projects by renaming .js files to .ts and adding type annotations incrementally. The TypeScript compiler can work alongside your existing build tools.\n\nBasic types in TypeScript include string, number, boolean, array, and object. You can also define custom types using interfaces and type aliases, enabling you to model your data structures accurately and enforce contracts between different parts of your application.\n\nFunctions in TypeScript can have typed parameters and return types. Optional and default parameters are supported, and you can use function overloads to handle different parameter combinations.\n\nClasses in TypeScript support access modifiers (public, private, protected), abstract classes, and implements keyword for ensuring classes conform to specific interfaces. This enables robust object-oriented programming patterns.\n\nGenerics allow you to create reusable components that can work with multiple types while maintaining type safety. This is particularly useful for utility functions, data structures, and API clients.\n\nThe TypeScript ecosystem includes excellent tooling support with IDEs like Visual Studio Code providing intelligent autocomplete, refactoring capabilities, and inline error detection.\n\nAdvanced features like conditional types, mapped types, and utility types provide powerful ways to manipulate and transform types, enabling sophisticated type-level programming.\n\nMigrating to TypeScript improves code maintainability, enables better refactoring, and makes onboarding new team members easier through self-documenting code.",
+        "authorId": {"$oid": "64a1b2c3d4e5f6789abc0005"}
+      },
+      {
+        "title": "Building Progressive Web Apps",
+        "excerpt": "Learn how to create app-like experiences on the web using Progressive Web App technologies and best practices.",
+        "imageUrl": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+        "category": ["PWA", "Web Development", "Mobile"],
+        "date": "28/8/2023",
+        "content": "Building Progressive Web Apps\n\nProgressive Web Apps (PWAs) combine the best of web and mobile applications, offering app-like experiences that work across all devices and platforms. They use modern web technologies to deliver fast, engaging, and reliable user experiences.\n\nThe foundation of any PWA is a secure connection (HTTPS), a responsive design that works on all devices, and a service worker that enables offline functionality. These core requirements ensure your app works reliably regardless of network conditions.\n\nService workers act as a proxy between your app and the network, enabling features like offline caching, background synchronization, and push notifications. They run in the background and can intercept network requests to serve cached content when the user is offline.\n\nThe Web App Manifest is a JSON file that provides metadata about your application. It defines how your app appears when installed on a user's home screen, including the app name, icons, theme colors, and display mode.\n\nCaching strategies are crucial for PWA performance. You can implement cache-first, network-first, or stale-while-revalidate patterns depending on your content requirements. The Cache API provides fine-grained control over what gets cached and when.\n\nPush notifications enable re-engagement with users even when they're not actively using your app. The Push API works with service workers to deliver timely and relevant notifications that can bring users back to your application.\n\nApp-like navigation patterns, including smooth transitions and gesture-based interactions, make PWAs feel native. You can use the History API to implement client-side routing and maintain proper browser behavior.\n\nPerformance is critical for PWAs. Implement code splitting, lazy loading, and optimize your critical rendering path. Use tools like Lighthouse to audit your PWA and identify areas for improvement.\n\nPWAs can be installed directly from the browser without going through an app store, reducing friction for users. They also support deep linking and can be shared via URL, combining the discoverability of web apps with the engagement of native apps.\n\nTesting PWAs requires attention to different network conditions, device capabilities, and installation scenarios to ensure a consistent experience across all platforms.",
+        "authorId": {"$oid": "64a1b2c3d4e5f6789abc0006"}
+      },
+      {
+        "title": "Docker Containerization Fundamentals",
+        "excerpt": "Master the basics of Docker and containerization to streamline your development and deployment workflows.",
+        "imageUrl": "https://images.unsplash.com/photo-1605745341112-85968b19335b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+        "category": ["Docker", "DevOps", "Containerization"],
+        "date": "5/9/2023",
+        "content": "Docker Containerization Fundamentals\n\nDocker revolutionized application deployment by introducing lightweight, portable containers that package applications with all their dependencies. This ensures consistent behavior across different environments, from development to production.\n\nContainers are isolated processes that share the host operating system's kernel, making them more efficient than traditional virtual machines. They start quickly, use fewer resources, and provide consistent environments regardless of the underlying infrastructure.\n\nDockerfiles define how to build container images using a series of instructions. Each instruction creates a layer in the image, and Docker's layering system enables efficient storage and transfer by reusing common layers across different images.\n\nDocker images are read-only templates used to create containers. They can be built from scratch or based on existing images from Docker Hub, a public registry containing thousands of pre-built images for popular software and frameworks.\n\nContainer orchestration becomes important when running multiple containers. Docker Compose allows you to define multi-container applications using YAML files, specifying services, networks, and volumes in a declarative manner.\n\nVolumes provide persistent storage for containers, allowing data to survive container restarts and be shared between containers. Understanding volume types and mount strategies is crucial for data management in containerized applications.\n\nNetworking in Docker enables communication between containers and external systems. Docker creates isolated networks by default and provides various networking drivers for different use cases, from simple bridge networks to complex overlay networks.\n\nBest practices include keeping images small by using multi-stage builds, running containers as non-root users, and following the principle of one process per container. Security considerations include scanning images for vulnerabilities and using trusted base images.\n\nDocker integrates well with CI/CD pipelines, enabling automated testing and deployment workflows. Container registries allow you to store and distribute images across different environments and team members.\n\nUnderstanding Docker fundamentals is essential for modern software development, as containerization has become the standard for deploying applications in cloud environments and microservices architectures.",
+        "authorId": {"$oid": "64a1b2c3d4e5f6789abc0007"}
+      },
+      {
+        "title": "Vue.js 3 Composition API Guide",
+        "excerpt": "Explore Vue.js 3's Composition API and how it changes the way we build reactive and reusable Vue components.",
+        "imageUrl": "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+        "category": ["Vue.js", "JavaScript", "Frontend"],
+        "date": "18/9/2023",
+        "content": "Vue.js 3 Composition API Guide\n\nVue.js 3 introduced the Composition API, a new way to organize component logic that addresses limitations of the Options API in large, complex components. It provides better TypeScript integration and makes code more reusable and maintainable.\n\nThe setup function is the entry point for using the Composition API. It runs before the component is created and provides access to props, context, and allows you to define reactive state, computed properties, and methods.\n\nReactivity in Vue 3 is powered by the ref and reactive functions. ref creates reactive references for primitive values, while reactive creates reactive objects. This explicit reactivity system gives you better control over what data is reactive.\n\nComputed properties in the Composition API are created using the computed function, which automatically tracks dependencies and updates when reactive data changes. They're cached based on dependencies, ensuring optimal performance.\n\nWatchers allow you to perform side effects when reactive data changes. The watch function provides more flexibility than the Options API equivalent, supporting multiple sources and immediate execution options.\n\nLifecycle hooks in the Composition API are imported functions that start with 'on' (onMounted, onUpdated, etc.). They can be called multiple times and provide the same functionality as their Options API counterparts.\n\nThe Composition API excels at code organization through composables - reusable functions that encapsulate reactive logic. This pattern enables sharing stateful logic between components more effectively than mixins.\n\nTypeScript integration is significantly improved with the Composition API. Type inference works better, and you get full IntelliSense support without additional configuration, making the development experience smoother.\n\nMigrating from the Options API to the Composition API is optional and can be done gradually. You can use both APIs in the same component, allowing for incremental adoption in existing projects.\n\nThe Composition API doesn't replace the Options API but provides an alternative for complex logic organization. Choose the approach that best fits your project's needs and your team's preferences.",
+        "authorId": {"$oid": "64a1b2c3d4e5f6789abc0008"}
+      },
+      {
+        "title": "MongoDB Database Design Patterns",
+        "excerpt": "Learn essential MongoDB design patterns and best practices for building scalable NoSQL applications.",
+        "imageUrl": "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+        "category": ["MongoDB", "Database", "NoSQL"],
+        "date": "2/10/2023",
+        "content": "MongoDB Database Design Patterns\n\nMongoDB's document-based model requires different design patterns compared to relational databases. Understanding these patterns is crucial for building efficient, scalable applications that leverage MongoDB's strengths.\n\nThe Embedded Document pattern stores related data within a single document, reducing the need for joins. This works well for one-to-one and one-to-few relationships where data is frequently accessed together.\n\nReference patterns use document IDs to link related data across collections, similar to foreign keys in relational databases. This approach is suitable for one-to-many and many-to-many relationships with large datasets.\n\nThe Bucket pattern aggregates time-series or similar data into documents containing arrays of related items. This reduces the total number of documents and improves query performance for time-based data.\n\nPolymorphic patterns handle documents with similar but not identical structures within the same collection. Using a discriminator field helps identify document types and enables flexible schema design.\n\nThe Subset pattern addresses large documents by storing frequently accessed data in a smaller summary document, with complete data in a separate collection. This improves performance for common queries.\n\nTree patterns model hierarchical data structures like organizational charts or category trees. MongoDB supports various tree patterns including parent references, child references, and materialized paths.\n\nThe Schema Versioning pattern handles evolving data structures by including version fields in documents. This enables gradual migrations and backward compatibility during application updates.\n\nIndexing strategies are crucial for MongoDB performance. Create compound indexes for common query patterns, use partial indexes for sparse data, and consider text indexes for full-text search capabilities.\n\nAggregation pipelines provide powerful data processing capabilities, allowing complex transformations and analytics directly in the database. Understanding pipeline optimization is key to maintaining performance.\n\nDesigning for scalability involves considering data distribution, shard key selection, and query patterns. Plan for horizontal scaling early to avoid costly refactoring later.",
+        "authorId": {"$oid": "64a1b2c3d4e5f6789abc0009"}
+      },
+      {
+        "title": "Modern CSS Features You Should Know",
+        "excerpt": "Discover the latest CSS features that are changing how we style web applications and create better user experiences.",
+        "imageUrl": "https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+        "category": ["CSS", "Web Development", "Frontend"],
+        "date": "16/10/2023",
+        "content": "Modern CSS Features You Should Know\n\nCSS continues to evolve rapidly, introducing features that make styling more powerful, intuitive, and maintainable. These modern additions reduce the need for JavaScript solutions and enable more creative designs.\n\nCSS Container Queries revolutionize responsive design by allowing elements to respond to their container's size rather than the viewport. This enables truly modular components that adapt to their context, regardless of screen size.\n\nThe :has() pseudo-class, often called the 'parent selector,' enables selecting elements based on their descendants. This powerful feature eliminates many JavaScript workarounds and enables more sophisticated styling logic.\n\nCSS Cascade Layers (@layer) provide explicit control over the cascade, allowing you to organize styles into layers with defined priority. This makes large stylesheets more manageable and reduces specificity conflicts.\n\nLogical properties (margin-inline-start, padding-block-end) replace physical properties to support different writing modes and directions. This makes internationalization easier and creates more flexible layouts.\n\nCSS Custom Properties (CSS Variables) enable dynamic styling and theming. They can be updated via JavaScript, cascade through the DOM, and create more maintainable design systems.\n\nThe clamp() function provides responsive sizing without media queries, accepting minimum, preferred, and maximum values. Combined with viewport units, it creates fluid typography and spacing.\n\nCSS Grid subgrid allows nested grids to participate in their parent's grid lines, solving complex alignment problems in nested layouts. This feature greatly improves grid layout flexibility.\n\nThe accent-color property enables customizing form control colors to match your brand while maintaining accessibility. This simple property dramatically improves form styling consistency.\n\nNew color functions like color-mix() and relative color syntax provide powerful color manipulation capabilities directly in CSS, reducing the need for preprocessing tools.\n\nThese modern CSS features enable more expressive, maintainable stylesheets while improving performance and user experience across different devices and contexts.",
+        "authorId": {"$oid": "64a1b2c3d4e5f6789abc0010"}
+      }
+    ]
+  }
