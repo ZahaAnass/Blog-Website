@@ -25,14 +25,14 @@ export const UserLogin = async (user) => {
 
 // Blog
 export const getAllBlogs = async (token) => {
-    const response = await API.get("/blog", {
+    const response = await API.get("/blogs", {
         headers: { Authorization: `Bearer ${token}` }
     })
     return response
 }
 
 export const getBlogById = async (id, token) => {
-    const response = await API.get(`/blog/${id}`, {
+    const response = await API.get(`/blogs/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
     })
     return response
