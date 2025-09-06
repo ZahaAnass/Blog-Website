@@ -20,11 +20,13 @@ const BlogSchema = new mongoose.Schema({
         required: [true, "Please provide image url"],
         trim: true,
     },
-    category: {
-        type: String,
-        required: [true, "Please provide category"],
-        trim: true,
-    },
+    category: [
+        {
+            type: String,
+            required: [true, "Please provide category"],
+            trim: true,
+        }
+    ],
     date: {
         type: String,
         default: today,
