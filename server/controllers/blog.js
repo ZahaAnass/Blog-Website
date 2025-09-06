@@ -3,7 +3,7 @@ const { BadRequestError, NotFoundError } = require("../errors")
 const { StatusCodes } = require("http-status-codes")
 
 const getAllBlogs = async (req, res) => {
-    const blogs = await Blog.find({ authorId: req.user.userId }).sort({ createdAt: 1 })
+    const blogs = await Blog.find().sort({ createdAt: 1 }).populate("authorId", "name")
     res.status(StatusCodes.OK).json({ blogs })
 }
 
@@ -12,7 +12,7 @@ const getBlog = async (req, res) => {
     if(!blogId){
         throw new BadRequestError("Please provide blog id")
     }
-    const blog = await Blog.findOne({ _id: blogId, authorId: userId })
+    const blog = await Blog.findOne({ _id: blogId, authorId: userId }).populate("authorId", "name")
     if(!blog){
         throw new NotFoundError(`No blog with id: ${blogId}`)
     }
