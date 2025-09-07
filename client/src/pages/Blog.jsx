@@ -63,7 +63,7 @@ export default function Blog() {
                                 title={post.title}
                                 excerpt={post.excerpt}
                                 imageUrl={post.imageUrl}
-                                category={post.category}
+                                category={[...new Set(post.category)]}
                                 date={post.date}
                                 author={post.authorId.name}
                                 post={post}
