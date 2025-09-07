@@ -57,7 +57,16 @@ const deleteBlog = async (req, res) => {
     res.status(StatusCodes.OK).json({ blog })
 }
 
+const getBlogCategories = async (req, res) => {
+    const categories = await Blog.find({}).select("category")
+    const uniqueCategories = [...new Set(categories.map(category => category.category).flat())]
+    if(!categories){
+        throw new NotFoundError("No categories found")
+    }
+    res.status(StatusCodes.OK).json({ categories: uniqueCategories })
+}
+
 module.exports = {
-    createBlog, getAllBlogs, getBlog, updateBlog, deleteBlog
+    createBlog, getAllBlogs, getBlog, updateBlog, deleteBlog, getBlogCategories
 }
 
