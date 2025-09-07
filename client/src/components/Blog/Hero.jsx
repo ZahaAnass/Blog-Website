@@ -2,11 +2,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "flowbite-react";
 import Form from "./Form"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getBlogCategories } from "../../api/api.js"
 
 export default function Hero({ onNewPost }) {
     const [formOpen, setFormOpen] = useState(false);
-    
+    const [loading, setLoading] = useState(false);
+    const [categories, setCategories] = useState([]);
+
+    const fillCategories = async () => {
+        setLoading(true);
+        const response = await getBlogCategories();
+        setCategories(response.data.categories);
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        fillCategories();
+    }, []);
 
     return (
         <div className="text-center py-12 md:py-20 px-4">
@@ -62,9 +75,20 @@ export default function Hero({ onNewPost }) {
                 )}
 
                 {/* Popular Tags */}
+                {loading && (
+                    <div className="mt-6 flex flex-wrap justify-center gap-2">
+                        <span className="text-sm text-gray-500 mt-1">Popular Tags:</span>
+                        <div className="animate-pulse">
+                            <div className="h-4 w-24 bg-gray-200 rounded mb-2"></div>
+                            <div className="h-4 w-20 bg-gray-200 rounded mb-2"></div>
+                            <div className="h-4 w-16 bg-gray-200 rounded mb-2"></div>
+                        </div>
+                    </div>
+                )}
+                {categories.length > 0 && (
                 <div className="mt-6 flex flex-wrap justify-center gap-2">
                     <span className="text-sm text-gray-500 mt-1">Popular Tags:</span>
-                    {['React', 'JavaScript', 'CSS', 'Web Development', 'Tutorials'].map((tag) => (
+                    {categories.map((tag) => (
                         <button
                             key={tag}
                             className="px-3 py-1 text-sm rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
@@ -73,6 +97,7 @@ export default function Hero({ onNewPost }) {
                         </button>
                     ))}
                 </div>
+                )}
             </div>
         </div>
     );
