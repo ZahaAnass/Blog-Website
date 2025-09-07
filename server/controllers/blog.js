@@ -8,11 +8,11 @@ const getAllBlogs = async (req, res) => {
 }
 
 const getBlog = async (req, res) => {
-    const {user: {userId}, params: {id: blogId}} = req
+    const { params: {id: blogId} } = req
     if(!blogId){
         throw new BadRequestError("Please provide blog id")
     }
-    const blog = await Blog.findOne({ _id: blogId, authorId: userId }).populate("authorId", "name")
+    const blog = await Blog.findOne({ _id: blogId }).populate("authorId", "name")
     if(!blog){
         throw new NotFoundError(`No blog with id: ${blogId}`)
     }
