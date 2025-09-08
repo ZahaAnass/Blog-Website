@@ -46,11 +46,11 @@ const updateBlog = async (req, res) => {
 }
 
 const deleteBlog = async (req, res) => {
-    const {user: {userId}, params: {id: blogId}} = req
+    const {params: {id: blogId}} = req
     if(!blogId){
         throw new BadRequestError("Please provide blog id")
     }
-    const blog = await Blog.findOneAndDelete({ _id: blogId, authorId: userId })
+    const blog = await Blog.findOneAndDelete({ _id: blogId })
     if(!blog){
         throw new NotFoundError(`No blog with id: ${blogId}`)
     }
