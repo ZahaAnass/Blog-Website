@@ -3,7 +3,7 @@ import Hero from "../components/Blog/Hero";
 import { useState, useCallback, useEffect } from "react";
 import NavBar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { getAllBlogs } from "../api/api";
+import { getAllBlogs, deleteBlog } from "../api/api";
 
 export default function Blog() {
 
@@ -30,8 +30,11 @@ export default function Blog() {
         setBlogPosts(prevPosts => prevPosts.map(post => post.id === updatedPost.id ? updatedPost : post));
     };
     
-    const deletePost = (id) => {
-        setBlogPosts(prevPosts => prevPosts.filter(post => post.id !== id));
+    const deletePost = async (id) => {
+        const response = await deleteBlog(id);
+        if(response.status === 200){
+            fillBlogs();
+        }
     };
     
     return (
