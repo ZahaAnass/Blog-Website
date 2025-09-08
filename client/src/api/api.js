@@ -53,7 +53,7 @@ export const updateBlog = async (id, blog, token) => {
 }
 
 export const deleteBlog = async (id, token) => {
-    const response = await API.delete(`/blog/${id}`, {
+    const response = await API.delete(`/blogs/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
     })
     return response
