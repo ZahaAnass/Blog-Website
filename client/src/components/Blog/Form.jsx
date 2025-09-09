@@ -4,27 +4,40 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons"
 
 const Form = ({ onClose, onNewPost, post = "" }) => {
     const isEditMode = !!post;
+    const user = JSON.parse(localStorage.getItem("user"))
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formData = {
-            id: isEditMode ? post.id : Date.now(),
             title: e.target.title.value,
             excerpt: e.target.excerpt.value,
             content: e.target.content.value,
             imageUrl: e.target.imageUrl.value,
             category: e.target.categories.value.split(",").map(cat => cat.trim()),
-            date: isEditMode ? post.date : new Date().toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            }),
-            author: isEditMode ? post.author : 'Anass'
         };
 
-        onNewPost(formData);
-        onClose();
+        if (isEditMode) {
+            const updateData = {
+                ...formData,
+                _id: post._id,
+                authorId: post.authorId
+            };
+            const success = await onNewPost(updateData);
+            if (success) onClose();
+        } else {
+            const newPost = {
+                ...formData,
+                date: new Date().toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }),
+                authorId: user._id
+            };
+            onNewPost(newPost);
+            onClose();
+        }
     }
 
     const handleClose = () => {
@@ -99,7 +112,7 @@ const Form = ({ onClose, onNewPost, post = "" }) => {
                         name="categories"
                         type="text" 
                         placeholder="e.g., technology, programming, web development" 
-                        defaultValue={isEditMode ? post.category.join(', ') : ''}
+                        defaultValue={isEditMode && post.category ? post.category.join(', ') : ''}
                         required 
                         className="w-full px-4 py-2 rounded-lg border border-gray-600 bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-200"
                     />
@@ -117,6 +130,6 @@ const Form = ({ onClose, onNewPost, post = "" }) => {
     )
 
     return renderForm();
-
 }
+
 export default Form;
