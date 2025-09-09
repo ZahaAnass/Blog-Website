@@ -20,11 +20,12 @@ const getBlog = async (req, res) => {
 }
 
 const createBlog = async (req, res) => {
+    const { userId } = req.user
     const { title, excerpt, imageUrl, category, content } = req.body
     if(!title || !excerpt || !imageUrl || !category || !content){
         throw new BadRequestError("Please provide all fields")
     }
-    const blog = await Blog.create({ title, excerpt, imageUrl, category, content })
+    const blog = await Blog.create({ title, excerpt, imageUrl, category, content, authorId: userId })
     res.status(StatusCodes.CREATED).json({ blog })
 }
 
