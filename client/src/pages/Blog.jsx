@@ -25,7 +25,7 @@ export default function Blog() {
     const createNewPost = async (newPost) => {
         try {
             const response = await createBlog(newPost);
-            if(response.status === 200){
+            if(response.status === 201){
                 await fillBlogs();
                 return true;
             }
