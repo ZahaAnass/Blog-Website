@@ -5,7 +5,7 @@ import Form from "./Form"
 import { useState, useEffect } from "react";
 import { getBlogCategories } from "../../api/api.js"
 
-export default function Hero({ onNewPost }) {
+export default function Hero({ createNewPost }) {
     const [formOpen, setFormOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [categories, setCategories] = useState([]);
@@ -67,7 +67,12 @@ export default function Hero({ onNewPost }) {
                         <div className="flex min-h-full items-center justify-center p-4 text-center">
                             <div className="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
                                 <div className="p-6">
-                                    <Form onClose={() => setFormOpen(false)} onNewPost={onNewPost} />
+                                    <Form onClose={() => setFormOpen(false)} onNewPost={async (post) => {
+                                        const success = await createNewPost(post);
+                                        if (success) {
+                                            setFormOpen(false);
+                                        }
+                                    }} />
                                 </div>
                             </div>
                         </div>
