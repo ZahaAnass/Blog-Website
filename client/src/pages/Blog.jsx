@@ -1,9 +1,9 @@
 import BlogCard from "../components/Blog/BlogCard";
 import Hero from "../components/Blog/Hero";
 import { useState, useCallback, useEffect } from "react";
-import NavBar from '../components/Navbar'
-import Footer from '../components/Footer'
-import { getAllBlogs, deleteBlog } from "../api/api";
+import NavBar from '../components/Navbar';
+import Footer from '../components/Footer';
+import { getAllBlogs, deleteBlog, updateBlog } from "../api/api";
 
 export default function Blog() {
 
@@ -21,13 +21,21 @@ export default function Blog() {
         fillBlogs();
     }, []);
 
-    // Function to update blog posts from child components
     const updateBlogPosts = useCallback((newPost) => {
         setBlogPosts(prevPosts => [...prevPosts, newPost]);
     }, []);
 
-    const editPost = (updatedPost) => {
-        setBlogPosts(prevPosts => prevPosts.map(post => post.id === updatedPost.id ? updatedPost : post));
+    const editPost = async (updatedPost) => {
+        try {
+            const response = await updateBlog(updatedPost._id, updatedPost);
+            if(response.status === 200){
+                await fillBlogs();
+                return true;
+            }
+        } catch {
+            return false;
+        }
+        return false;
     };
     
     const deletePost = async (id) => {
