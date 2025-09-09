@@ -68,7 +68,13 @@ export default function BlogCard({id, title, excerpt, imageUrl, category, date, 
                         </Button>
                     </Link>
                     <div className="flex-1 flex justify-end space-x-2">
-                        <Button color="gray" size="sm" className="!p-2 !px-4 flex-1" onClick={() => setOpenEditForm(true)}>
+                        <Button 
+                            color="gray" 
+                            size="sm" 
+                            className="!p-2 !px-4 flex-1" 
+                            onClick={() => setOpenEditForm(true)}
+                            aria-label="Edit post"
+                        >
                             <FontAwesomeIcon icon={faEdit} className="h-4 w-4" />
                         </Button>
                         <Button color="red" size="sm" className="!p-2 !px-4 flex-1" onClick={() => deletePost(id)}>
@@ -80,11 +86,26 @@ export default function BlogCard({id, title, excerpt, imageUrl, category, date, 
 
             {openEditForm && (
                 <div className="fixed inset-0 z-50 overflow-y-auto">
-                    <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" onClick={() => setOpenEditForm(false)}></div>
+                    <div 
+                        className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" 
+                        onClick={() => setOpenEditForm(false)}
+                    ></div>
                     <div className="flex min-h-full items-center justify-center p-4 text-center">
                         <div className="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
                             <div className="p-6">
-                                <Form onClose={() => setOpenEditForm(false)} onNewPost={editPost} post={post}/>
+                                <Form 
+                                    onClose={() => setOpenEditForm(false)} 
+                                    onNewPost={async (updatedPost) => {
+                                        const success = await editPost(updatedPost);
+                                        if (success) {
+                                            setOpenEditForm(false);
+                                        }
+                                    }} 
+                                    post={{
+                                        ...post,
+                                        authorId: post.authorId?._id ? post.authorId : { _id: post.authorId }
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>
