@@ -10,14 +10,14 @@ export default function ContactForm() {
         <div className="w-full max-w-7xl mx-auto p-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Left Column - Form */}
-                <Card className="h-full">
-                    <h2 className="text-2xl font-bold text-white mb-2">Send us a Message</h2>
+                <Card className="h-full text-gray-600 dark:text-gray-400">
+                    <h2 className="text-2xl font-bold text-gray-600 dark:text-gray-400 mb-2">Send us a Message</h2>
                     <p className="text-gray-400 -mt-2 mb-6">Feel free to contact us through the form below</p>
                     
                     <form className="space-y-10">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <Label htmlFor="name" value="Your Name" className="mb-1 block text-sm font-medium text-white" />
+                                <Label htmlFor="name" value="Your Name" className="mb-1 block text-sm font-medium text-gray-600 dark:text-gray-400" />
                                 <TextInput 
                                     id="name" 
                                     type="text" 
@@ -27,7 +27,7 @@ export default function ContactForm() {
                                 />
                             </div>
                             <div>
-                                <Label htmlFor="email" value="Your Email" className="mb-1 block text-sm font-medium text-white" />
+                                <Label htmlFor="email" value="Your Email" className="mb-1 block text-sm font-medium text-gray-600 dark:text-gray-400" />
                                 <TextInput 
                                     id="email" 
                                     type="email" 
@@ -39,7 +39,7 @@ export default function ContactForm() {
                         </div>
                         
                         <div>
-                            <Label htmlFor="subject" value="Subject" className="mb-1 block text-sm font-medium text-white" />
+                            <Label htmlFor="subject" value="Subject" className="mb-1 block text-sm font-medium text-gray-600 dark:text-gray-400" />
                             <TextInput 
                                 id="subject" 
                                 type="text" 
@@ -50,7 +50,7 @@ export default function ContactForm() {
                         </div>
                         
                         <div>
-                            <Label htmlFor="message" value="Message" className="mb-1 block text-sm font-medium text-white" />
+                            <Label htmlFor="message" value="Message" className="mb-1 block text-sm font-medium text-gray-600 dark:text-gray-400" />
                             <Textarea 
                                 id="message" 
                                 placeholder="Your message here..." 
@@ -62,7 +62,7 @@ export default function ContactForm() {
                         
                         <Button 
                             type="submit" 
-                            className="w-full bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 hover:animate-bounce"
+                            className="w-full bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 hover:animate-bounce text-white dark:text-gray-900"
                             color=""
                         >
                             <FontAwesomeIcon icon={faPaperPlane} className="mr-2" />
