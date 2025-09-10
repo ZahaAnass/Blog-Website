@@ -5,9 +5,9 @@ import { Card } from "flowbite-react";
 export default function ContactInfo() {
 
     return(
-        <Card className="not-dark:bg-gradient-to-r from-purple-600 to-pink-600 text-white dark:bg-gray-800 dark:text-gray-400">
+        <Card className="text-gray-600 dark:bg-gray-800 dark:text-gray-400">
             <div className="contact-info">
-                <h1 className="text-2xl font-bold text-white">Contact Information</h1>
+                <h1 className="text-2xl font-bold text-gray-600 dark:text-gray-400">Contact Information</h1>
             </div>
             <div className="card-description">
                 <p className="text-gray-600 dark:text-gray-400">Here are different ways you can reach us.</p>
