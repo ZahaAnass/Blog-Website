@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faBook } from "@fortawesome/free-solid-svg-icons"
 import { Button } from "flowbite-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Theme from "./Theme";
 
 function NavBar(){
 
@@ -92,6 +93,11 @@ function NavBar(){
                                 </Link>
                             </div>
                         )}
+
+                        {/* Theme Toggle */}
+                        <div className="flex items-center ml-4">
+                            <Theme />
+                        </div>
 
                         {/* Mobile menu button */}
                         <div className="-mr-2 flex items-center md:hidden">
