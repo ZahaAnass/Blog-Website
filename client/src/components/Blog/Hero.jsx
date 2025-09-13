@@ -4,13 +4,25 @@ import { Button } from "flowbite-react";
 import Form from "./Form"
 import { useState, useEffect } from "react";
 import { getBlogCategories } from "../../api/api.js"
+import { useNavigate } from "react-router-dom";
 
 export default function Hero({ createNewPost }) {
+    const navigate = useNavigate();
     const [formOpen, setFormOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [categories, setCategories] = useState([]);
 
+    const auth = () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login');
+            return false;
+        }
+        return true;
+    }
+
     const fillCategories = async () => {
+        if (!auth()) return;
         setLoading(true);
         const response = await getBlogCategories();
         setCategories(response.data.categories);
@@ -18,7 +30,9 @@ export default function Hero({ createNewPost }) {
     }
 
     useEffect(() => {
-        fillCategories();
+        if (auth()) {
+            fillCategories();
+        }
     }, []);
 
     return (
