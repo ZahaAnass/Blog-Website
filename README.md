@@ -1,61 +1,81 @@
-# Blog Website
+# BlogSpace 🚀
 
-A modern, full-stack blog platform built with React, Node.js, Express, and MongoDB.
+A modern, full-stack blog platform built with React, Node.js, Express, and MongoDB. BlogSpace provides a seamless writing and reading experience with a clean, responsive design and powerful features for both readers and authors.
 
-> **Note:** This is the main repository containing both frontend and backend code. For detailed backend documentation, see the [server README](./server/README.md).
+## ✨ Features
 
-## 🚀 Features
+### 🌟 For Readers
 
-- **User Authentication**
-  - Secure login/signup with JWT
-  - Protected routes and API endpoints
-  - User profile management
+- Clean, responsive reading experience
+- Dark/Light mode with system preference detection
+- Search and filter blog posts
+- Categories and tags for easy discovery
+- Comments and reactions (coming soon)
 
-- **Blog Management**
-  - Create, read, update, and delete blog posts
-  - Rich text editor for content creation
-  - Image upload support
-  - Categories and tags
+### ✍️ For Authors
 
-- **Responsive Design**
-  - Mobile-first approach
-  - Dark/Light mode
-  - Clean and intuitive UI
+- Rich text editor with markdown support
+- Image upload and management
+- Draft and scheduled posts
+- Post analytics (coming soon)
+
+### 🔒 User Features
+
+- Secure authentication with JWT
+- User profiles with avatars
+- Bookmark and save favorite posts
+- Personalized recommendations
+
+## 🚀 Tech Stack
+
+### Frontend
+
+- **Framework**: React 19 with Vite
+- **Styling**: Tailwind CSS + Flowbite
+- **State Management**: React Context API
+- **Routing**: React Router v7
+- **Form Handling**: React Hook Form
+- **Icons**: FontAwesome
+- **HTTP Client**: Axios
+
+### Backend
+
+- **Runtime**: Node.js 18+
+- **Framework**: Express.js
+- **Database**: MongoDB with Mongoose ODM
+- **Authentication**: JWT
+- **API Documentation**: Swagger/OpenAPI
+- **Security**: Helmet, CORS, xss-clean
 
 ## 🏗️ Project Structure
 
 ```bash
 Blog-Website/
-├── front-end/       # React frontend application
-├── server/          # Node.js/Express backend server
-└── README.md        # This file
+├── client/                 # Frontend React application
+│   ├── public/            # Static assets
+│   └── src/               # Source code
+│       ├── components/    # Reusable UI components
+│       ├── pages/         # Page components
+│       ├── context/       # React context providers
+│       └── hooks/         # Custom React hooks
+│
+├── server/                # Backend Node.js/Express server
+│   ├── controllers/       # Route controllers
+│   ├── models/           # MongoDB models
+│   ├── routes/           # API routes
+│   ├── middleware/       # Custom middleware
+│   └── utils/            # Utility functions
+│
+└── README.md             # This file
 ```
 
-## 🛠️ Tech Stack
-
-### Frontend
-
-- React.js
-- Tailwind CSS
-- React Router
-- Axios for API calls
-- React Icons
-
-### Backend
-
-- Node.js & Express.js
-- MongoDB with Mongoose
-- JWT Authentication
-- RESTful API
-- Swagger/OpenAPI documentation
-
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- MongoDB (v4.4 or higher)
-- npm (v6 or higher)
+- Node.js v18 or higher
+- npm v9 or higher
+- MongoDB v6.0 or higher
 
 ### Installation
 
@@ -70,53 +90,78 @@ Blog-Website/
 
    ```bash
    cd server
+   cp .env.example .env
+   # Update .env with your configuration
    npm install
-   cp .env.example .env  # Update with your credentials
    npm run dev
    ```
 
 3. **Set up the frontend**
 
    ```bash
-   cd ../front-end
+   cd ../client
    npm install
-   npm start
+   npm run dev
    ```
 
 4. **Access the application**
 
-   - Frontend: <http://localhost:3000>
+   - Frontend: <http://localhost:5173>
    - Backend API: <http://localhost:5000>
    - API Documentation: <http://localhost:5000/api-docs>
 
-## 📚 Documentation
+## 📚 API Documentation
 
-### Frontend
-
-See the [frontend documentation](./front-end/README.md) for detailed setup and usage instructions.
-
-### Backend API
-
-For complete API documentation, please refer to the [server documentation](./server/README.md).
+Interactive API documentation is available at `http://localhost:5000/api-docs` when the server is running.
 
 Key endpoints include:
 
 - Authentication: `POST /api/auth/register`, `POST /api/auth/login`
-- Blogs: `GET /api/blogs`, `POST /api/blogs`, `GET /api/blogs/:id`, etc.
+- Blogs: `GET /api/blogs`, `POST /api/blogs`, `GET /api/blogs/:id`
 
-Interactive API documentation is available at `http://localhost:5000/api-docs` when the server is running.
+For complete API documentation, please refer to:
 
-## 🙏 Acknowledgments
+- [Frontend Documentation](./client/README.md)
+- [Backend API Documentation](./server/README.md)
 
-- [Create React App](https://create-react-app.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Express.js](https://expressjs.com/)
-- [MongoDB](https://www.mongodb.com/)
+## 🛡️ Security
+
+- All passwords are hashed using bcrypt
+- Rate limiting on authentication endpoints
+- Helmet for secure HTTP headers
+- XSS protection
+- Input validation and sanitization
+- Secure JWT implementation
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 🐛 Issues
 
-If you find any issues, please [open an issue](https://github.com/ZahaAnass/Blog-Website/issues) and we'll get to it as soon as possible.
+If you find any issues, please [open an issue](https://github.com/ZahaAnass/Blog-Website/issues) and we'll address it as soon as possible.
 
-## Project Link
+## 📄 License
 
-Project Link: [https://github.com/ZahaAnass/Blog-Website](https://github.com/ZahaAnass/Blog-Website)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [React](https://reactjs.org/) - Frontend framework
+- [Express](https://expressjs.com/) - Backend framework
+- [MongoDB](https://www.mongodb.com/) - Database
+- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
+- [Flowbite](https://flowbite.com/) - UI components
+- [FontAwesome](https://fontawesome.com/) - Icons
+- [Vite](https://vitejs.dev/) - Build tool
+- [Swagger](https://swagger.io/) - API documentation
+
+## 🔗 Project Link
+
+[https://github.com/ZahaAnass/Blog-Website](https://github.com/ZahaAnass/Blog-Website)
