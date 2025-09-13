@@ -4,22 +4,46 @@ import { useState, useEffect } from "react";
 import NavBar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { getAllBlogs, deleteBlog, updateBlog, createBlog } from "../api/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Blog() {
 
+    const navigate = useNavigate();
     const [blogPosts, setBlogPosts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    
+    const auth = () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login');
+            return false;
+        }
+        return true;
+    }
 
     const fillBlogs = async () => {
+        if (!auth()) return;
+        
         setLoading(true);
-        const response = await getAllBlogs();
-        setBlogPosts( response.data.blogs ?? []);
-        setLoading(false);
+        try {
+            const response = await getAllBlogs();
+            setBlogPosts(response.data.blogs ?? []);
+        } catch (error) {
+            if (error.response?.status === 401) {
+                localStorage.removeItem('token');
+                navigate('/login');
+            }
+            setError(error.response?.data?.message || 'Failed to fetch blogs');
+        } finally {
+            setLoading(false);
+        }
     }
 
     useEffect(() => {
-        fillBlogs();
+        if (auth()) {
+            fillBlogs();
+        }
     }, []);
 
     const createNewPost = async (newPost) => {
