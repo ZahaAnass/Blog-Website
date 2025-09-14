@@ -34,7 +34,9 @@ app.use(rateLimiter({
     max: 100
 }))
 app.use(helmet())
-app.use(cors())
+app.use(cors({
+    origin: "http://localhost:5173"
+}));
 app.use(xss())
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument))
