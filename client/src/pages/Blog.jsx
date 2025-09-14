@@ -10,9 +10,11 @@ export default function Blog() {
 
     const navigate = useNavigate();
     const [blogPosts, setBlogPosts] = useState([]);
+    const [displayedBlog, setDisplayedBlog] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
-    
+    const [search, setSearch] = useState('');
+
     const auth = () => {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -21,6 +23,27 @@ export default function Blog() {
         }
         return true;
     }
+
+const filterBlogs = () => {
+    if (!auth()) return;
+
+    if (search === '') {
+        fillBlogs();
+        return;
+    }
+
+    const filteredBlogs = blogPosts.filter(blog => 
+        blog.category.map(category => category.toLowerCase()).includes(search.toLowerCase()) || 
+        blog.title.toLowerCase().includes(search.toLowerCase())
+    );
+    
+    if (filteredBlogs.length === 0) {
+        setError("No blogs found");
+    } else {
+        setError("");
+        setBlogPosts(filteredBlogs);
+    }
+}
 
     const fillBlogs = async () => {
         if (!auth()) return;
@@ -39,6 +62,10 @@ export default function Blog() {
             setLoading(false);
         }
     }
+
+    useEffect(() => {
+        filterBlogs();
+    }, [search]);
 
     useEffect(() => {
         if (auth()) {
@@ -92,7 +119,7 @@ export default function Blog() {
             <div className="mx-auto px-4 mt-8">
                 <div className="max-w-7xl mx-auto py-8">
                     {/* Hero Section */}
-                    <Hero createNewPost={createNewPost} />
+                    <Hero createNewPost={createNewPost} setSearch={setSearch} />
 
                     {/* Error Alert */}
                     {error && (
