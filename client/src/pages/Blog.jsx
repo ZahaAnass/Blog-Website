@@ -10,7 +10,7 @@ export default function Blog() {
 
     const navigate = useNavigate();
     const [blogPosts, setBlogPosts] = useState([]);
-    const [displayedBlog, setDisplayedBlog] = useState(null);
+    const [displayedBlogs, setDisplayedBlogs] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [search, setSearch] = useState('');
@@ -24,26 +24,33 @@ export default function Blog() {
         return true;
     }
 
-const filterBlogs = () => {
-    if (!auth()) return;
+    const filterBlogs = () => {
+        if (!auth()) return;
 
-    if (search === '') {
-        fillBlogs();
-        return;
-    }
+        if (search === '') {
+            setDisplayedBlogs(blogPosts);
+            setError(false);
+            return;
+        }
 
-    const filteredBlogs = blogPosts.filter(blog => 
-        blog.category.map(category => category.toLowerCase()).includes(search.toLowerCase()) || 
-        blog.title.toLowerCase().includes(search.toLowerCase())
-    );
-    
-    if (filteredBlogs.length === 0) {
-        setError("No blogs found");
-    } else {
-        setError("");
-        setBlogPosts(filteredBlogs);
+        const filteredBlogs = blogPosts.filter(blog => {
+            const categoryMatch = blog.category && Array.isArray(blog.category) 
+                ? blog.category.some(cat => cat.toLowerCase().includes(search.toLowerCase()))
+                : false;
+            
+            const titleMatch = blog.title.toLowerCase().includes(search.toLowerCase());
+            
+            return categoryMatch || titleMatch;
+        });
+        
+        if (filteredBlogs.length === 0) {
+            setError("No blogs found");
+            setDisplayedBlogs([]);
+        } else {
+            setError(false);
+            setDisplayedBlogs(filteredBlogs);
+        }
     }
-}
 
     const fillBlogs = async () => {
         if (!auth()) return;
@@ -51,7 +58,9 @@ const filterBlogs = () => {
         setLoading(true);
         try {
             const response = await getAllBlogs();
-            setBlogPosts(response.data.blogs ?? []);
+            const blogs = response.data.blogs ?? [];
+            setBlogPosts(blogs);
+            setDisplayedBlogs(blogs);
         } catch (error) {
             if (error.response?.status === 401) {
                 localStorage.removeItem('token');
@@ -63,10 +72,12 @@ const filterBlogs = () => {
         }
     }
 
+    // Filter blogs whenever search term changes
     useEffect(() => {
         filterBlogs();
-    }, [search]);
+    }, [search, blogPosts]);
 
+    // Load blogs on component mount
     useEffect(() => {
         if (auth()) {
             fillBlogs();
@@ -168,10 +179,10 @@ const filterBlogs = () => {
                         </div>
                     )}
 
-                    {/* Blog Posts Grid */}
-                    {blogPosts.length > 0 ? (
+                    {/* Blog Posts Grid - Now using displayedBlogs instead of blogPosts */}
+                    {displayedBlogs.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {blogPosts.map((post, index) => (
+                        {displayedBlogs.map((post, index) => (
                             <BlogCard 
                                 key={index}
                                 id={post._id}
@@ -191,7 +202,9 @@ const filterBlogs = () => {
                         <div className="flex justify-center items-center h-64">
                             <div className="flex flex-col items-center space-y-2">
                                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
-                                <div className="text-white">No posts available.</div>
+                                <div className="text-white">
+                                    {search ? "No matching posts found." : "No posts available."}
+                                </div>
                             </div>
                         </div>
                     )}
