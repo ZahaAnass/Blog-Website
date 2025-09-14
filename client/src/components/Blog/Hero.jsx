@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { getBlogCategories } from "../../api/api.js"
 import { useNavigate } from "react-router-dom";
 
-export default function Hero({ createNewPost }) {
+export default function Hero({ createNewPost, setSearch }) {
     const navigate = useNavigate();
     const [formOpen, setFormOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -63,6 +63,7 @@ export default function Hero({ createNewPost }) {
                             type="text"
                             className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base"
                             placeholder="Search articles..."
+                            onChange={(e) => setSearch(e.target.value)}
                         />
                     </div>
                     <Button 
