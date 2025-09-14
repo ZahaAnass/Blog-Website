@@ -2,6 +2,8 @@
 
 A modern, full-stack blog platform built with React, Node.js, Express, and MongoDB. BlogSpace provides a seamless writing and reading experience with a clean, responsive design and powerful features for both readers and authors.
 
+![BlogSpace interface](./Blogspace.png)
+
 ## ✨ Features
 
 ### 🌟 For Readers
